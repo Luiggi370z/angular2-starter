@@ -3,6 +3,6 @@
   "indent_size": 2,
   "indent_with_tabs": false,
   "end_with_newline": true,
-  "break_chained_methods": true,
+  "break_chained_methods": false,
   "keep_array_indentation": true
 }

@@ -1,6 +1,10 @@
 {
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
+  // Disabled on typescript files until: https://github.com/prettier/prettier/issues/4922 is fixed
+  "[typescript]": {
+    "editor.formatOnSave": false
+  },
   "tslint.autoFixOnSave": true,
-  "javascript.format.insertSpaceAfterCommaDelimiter": false,
+  "javascript.format.enable": false,
   "prettier.tslintIntegration": true
 }
