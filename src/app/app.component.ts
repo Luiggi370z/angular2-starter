@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AdalService } from 'adal-angular4';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(private adalService: AdalService) {
+    adalService.init(environment.config);
+  }
+
   title = 'angular2-starter';
 }
