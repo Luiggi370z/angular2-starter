@@ -17,6 +17,12 @@ export class AuthCallbackComponent implements OnInit {
   ngOnInit() {
     this.adalService.handleWindowCallback();
 
+    this.adalService.getUser().subscribe(user => {
+      const loggedUser = user;
+      console.log(this.adalService.userInfo, loggedUser);
+      // var expireIn=user.profile.exp-newDate().getTime();
+    });
+
     setTimeout(() => {
       this._zone.run(
         () => this.router.navigate(['/'])

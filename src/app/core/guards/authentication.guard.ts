@@ -12,13 +12,10 @@ export class AuthenticationGuard implements CanActivate, CanActivateChild {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      console.log('AuthenticationGuard canActivate', this.adalService.userInfo);
-
       if (this.adalService.userInfo.authenticated) {
         return true;
       }
 
-      console.log('not authenticated', this.adalService.loginInProgress());
       this.adalService.login();
 
       return false;

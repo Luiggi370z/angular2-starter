@@ -7,6 +7,7 @@ export const environment = {
   adalConfig: {
     tenant: 'dd5d5cfe-d892-4892-b623-1134653cc289',
     clientId: '2ce67a78-63d5-48ef-ac8c-54be5e548c2e',
+    redirectUri: window.location.href + '/auth-callback',
     endpoints: {
       'https://graph.microsoft.com': '00000003-0000-0000-c000-000000000000'
     },
