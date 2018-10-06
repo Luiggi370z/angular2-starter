@@ -9,8 +9,10 @@ import { environment } from '../environments/environment';
 })
 export class AppComponent {
   constructor(private adalService: AdalService) {
-    adalService.init(environment.config);
+    adalService.init(environment.adalConfig);
   }
 
-  title = 'angular2-starter';
+  signOut(): void {
+    this.adalService.logOut();
+  }
 }

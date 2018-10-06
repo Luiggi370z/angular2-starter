@@ -4,12 +4,13 @@
 
 export const environment = {
   production: false,
-  config: {
-    tenant: 'careportfol.io',
-    clientId: '14c39115-7cae-4c02-b865-20d7b2d205f8',
+  adalConfig: {
+    tenant: 'dd5d5cfe-d892-4892-b623-1134653cc289',
+    clientId: '2ce67a78-63d5-48ef-ac8c-54be5e548c2e',
     endpoints: {
       'https://graph.microsoft.com': '00000003-0000-0000-c000-000000000000'
-    }
+    },
+    cacheLocation: 'localStorage'
   }
 };
 
