@@ -16,6 +16,7 @@
     "paths": {
       "@appCore/*": ["src/app/core/*"],
       "@appSrc/*": ["src/*"],
+      "@appModules/*": ["src/app/modules/index.ts"],
     },
     "lib": [
       "es2017",

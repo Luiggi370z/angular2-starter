@@ -15,8 +15,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
   providers: [
     AdalService,
     { provide: HTTP_INTERCEPTORS, useClass: AdalInterceptor, multi: true },
-    AuthenticationGuard,
     AuthenticationService,
+    AuthenticationGuard,
   ],
 })
 export class CoreModule {

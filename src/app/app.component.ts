@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { AdalService } from 'adal-angular4';
-import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +6,5 @@ import { environment } from '../environments/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private adalService: AdalService) {
-    adalService.init(environment.adalConfig);
-  }
-
-  signOut(): void {
-    this.adalService.logOut();
-  }
+  constructor() {  }
 }

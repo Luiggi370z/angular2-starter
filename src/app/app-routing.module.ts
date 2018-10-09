@@ -1,8 +1,8 @@
-import { AuthCallbackComponent } from './core/auth/auth-callback.component';
+import { AuthCallbackComponent } from '@appCore/auth/auth-callback.component';
 import { AuthenticationGuard } from '@appCore/guards';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './modules/home/home.component';
+import { HomeComponent } from '@appModules/';
 
 const routes: Routes = [
   {
