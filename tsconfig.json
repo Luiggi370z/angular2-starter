@@ -14,9 +14,10 @@
       "node_modules/@types"
     ],
     "paths": {
-      "@appCore/*": ["src/app/core/*"],
       "@appSrc/*": ["src/*"],
+      "@appCore/*": ["src/app/core/*"],
       "@appModules/*": ["src/app/modules/index.ts"],
+      "@appShared/*": ["src/app/shared/*"],
     },
     "lib": [
       "es2017",
