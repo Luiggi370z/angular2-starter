@@ -1,23 +1,23 @@
-import { AdalService } from 'adal-angular4';
 import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthenticationService } from '@appCore/services';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationGuard implements CanActivate, CanActivateChild {
-  constructor(private adalService: AdalService) { }
+  constructor(private authService: AuthenticationService) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      if (this.adalService.userInfo.authenticated) {
+
+      if (this.authService.isLoggedIn()) {
         return true;
       }
 
-      this.adalService.login();
-
+      this.authService.startAuthentication();
       return false;
   }
 

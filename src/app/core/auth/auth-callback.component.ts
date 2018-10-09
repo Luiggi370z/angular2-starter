@@ -1,6 +1,6 @@
-import { AdalService } from 'adal-angular4';
 import { Router } from '@angular/router';
 import { Component, OnInit, NgZone } from '@angular/core';
+import { AuthenticationService } from '@appCore/services';
 
 @Component({
   selector: 'app-auth-callback',
@@ -11,23 +11,16 @@ export class AuthCallbackComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private adalService: AdalService,
+    private authService: AuthenticationService,
     private _zone: NgZone) { }
 
   ngOnInit() {
-    this.adalService.handleWindowCallback();
-
-    this.adalService.getUser().subscribe(user => {
-      const loggedUser = user;
-      console.log(this.adalService.userInfo, loggedUser);
-      // var expireIn=user.profile.exp-newDate().getTime();
-    });
+    this.authService.completeAuthentication();
 
     setTimeout(() => {
       this._zone.run(
         () => this.router.navigate(['/'])
       );
-      console.log('setTimeout executed');
     }, 200);
   }
 }

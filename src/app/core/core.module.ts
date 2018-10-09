@@ -1,12 +1,23 @@
 import { AuthCallbackComponent } from './auth/auth-callback.component';
-import { AuthenticationGuard } from './guards/authentication.guard';
+import { AuthenticationGuard } from './guards';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AuthenticationService } from '@appCore/services';
+import { AdalService, AdalInterceptor } from 'adal-angular4';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+  ],
   declarations: [AuthCallbackComponent],
-  providers: [AuthenticationGuard],
+  providers: [
+    AdalService,
+    { provide: HTTP_INTERCEPTORS, useClass: AdalInterceptor, multi: true },
+    AuthenticationGuard,
+    AuthenticationService,
+  ],
 })
 export class CoreModule {
   constructor( @Optional() @SkipSelf() parentModule: CoreModule) {

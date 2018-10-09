@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AdalService } from 'adal-angular4';
+import { AuthenticationService } from '@appCore/services';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +8,17 @@ import { AdalService } from 'adal-angular4';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private adalService: AdalService) { }
+  public user: string;
+
+  constructor(private authService: AuthenticationService) { }
 
   ngOnInit() {
+    this.authService.getUser().subscribe(user => {
+      this.user = user.profile.name;
+    });
   }
 
   signOut(): void {
-    this.adalService.logOut();
+    this.authService.signout();
   }
 }
