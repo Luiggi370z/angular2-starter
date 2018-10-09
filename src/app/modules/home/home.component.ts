@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '@appCore/services';
 
+import { Store, Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { Authentication } from '@appShared/models';
+import { AuthenticationState } from '@appShared/state';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,15 +13,12 @@ import { AuthenticationService } from '@appCore/services';
 })
 export class HomeComponent implements OnInit {
 
-  public user: string;
+  @Select(AuthenticationState.getUser) user$: Observable<Authentication>;
 
-  constructor(private authService: AuthenticationService) { }
-
-  ngOnInit() {
-    this.authService.getUser().subscribe(user => {
-      this.user = user.profile.name;
-    });
+  constructor(private authService: AuthenticationService, private store: Store) {
   }
+
+  ngOnInit() { }
 
   signOut(): void {
     this.authService.signout();

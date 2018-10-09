@@ -14,6 +14,7 @@ export class AuthenticationGuard implements CanActivate, CanActivateChild {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
       if (this.authService.isLoggedIn()) {
+        this.authService.saveAuthenticatedUserInState();
         return true;
       }
 

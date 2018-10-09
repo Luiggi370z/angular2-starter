@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { environment } from '@appSrc/environments/environment';
 import { AdalService } from 'adal-angular4';
 
+import { Store } from '@ngxs/store';
+import { SetAuthenticatedUser } from '@appShared/actions';
+
 // TODO: for REST calls maybe AdalInterceptor will be required to refresh token if it is expired or close to be
 // also listen to the acquireToken event to catch any error. Required modules already in core.module
 
@@ -10,7 +13,7 @@ import { AdalService } from 'adal-angular4';
 })
 export class AuthenticationService {
 
-  constructor(private adalService: AdalService) {
+  constructor(private adalService: AdalService, private store: Store) {
     this.adalService.init(environment.adalConfig);
   }
 
@@ -32,7 +35,15 @@ export class AuthenticationService {
 
   public completeAuthentication() {
     this.adalService.handleWindowCallback();
-    // TODO: save user in app state
-    // this.adalService.getUser().subscribe(user => this.user = user);
+
+    this.saveAuthenticatedUserInState();
+  }
+
+  public saveAuthenticatedUserInState() {
+    this.adalService.getUser()
+      .subscribe(user => this.store.dispatch(new SetAuthenticatedUser({
+        name: user.profile.name,
+        email: user.userName
+      })));
   }
 }
