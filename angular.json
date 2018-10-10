@@ -28,6 +28,11 @@
               },
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/theme"
+              ]
+            },
             "scripts": [
               "./node_modules/moment/min/moment.min.js"
             ]
