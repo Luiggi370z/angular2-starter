@@ -1,5 +1,5 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { SetAuthenticatedUser } from './../actions/authentication.action';
+import { SetAuthenticatedUser } from '@appShared/actions';
 import { Authentication } from '@appShared/models';
 
 export class AuthenticationStateModel {
@@ -19,7 +19,7 @@ export class AuthenticationState {
   }
 
   @Action(SetAuthenticatedUser)
-  add({ patchState }: StateContext<AuthenticationStateModel>, { payload }: SetAuthenticatedUser) {
+  setUser({ patchState }: StateContext<AuthenticationStateModel>, { payload }: SetAuthenticatedUser) {
       patchState({
           user: payload
       });

@@ -4,7 +4,7 @@ import { AuthenticationService } from '@appCore/services';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Authentication } from '@appShared/models';
-import { AuthenticationState } from '@appShared/state';
+import { AuthenticationState, SystemState } from '@appShared/state';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +14,7 @@ import { AuthenticationState } from '@appShared/state';
 export class HomeComponent implements OnInit {
 
   @Select(AuthenticationState.getUser) user$: Observable<Authentication>;
+  @Select(SystemState.isAgentConnected) isAgentConnected$: Observable<boolean>;
 
   constructor(private authService: AuthenticationService, private store: Store) {
   }

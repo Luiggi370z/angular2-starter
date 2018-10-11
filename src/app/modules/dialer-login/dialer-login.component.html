@@ -1,3 +1,50 @@
-<p>
-  dialer-login works!
-</p>
+<div
+  id="dialerLoginForm"
+  name="dialerLoginForm"
+  role="form"
+  novalidate
+>
+  <div class="login-card"></div>
+
+  <div class="login-card">
+    <div class="title">
+      CUY
+      <span class="sub-title">Agent Login</span>
+    </div>
+
+    <div class="login-body">
+      <select></select>
+
+      <!-- <md-input-container
+        ng-if="dialerLogin.extension.show"
+        class="extension"
+      >
+        <label>{{dialerLogin.extension.label}}</label>
+        <md-icon
+          md-font-icon="fa fa-phone"
+          class="s-24"
+        ></md-icon>
+        <input
+          type="text"
+          name="extension"
+          ng-model="dialerLogin.model.extension"
+          ng-disabled="dialerLogin.isLoading"
+          required
+          ui-validate='"dialerLogin.extensionIsValid($value)"'
+        />
+        <div ng-messages="dialerLoginForm.extension.$error">
+          <div ng-message="validator">Invalid Extension.</div>
+          <div ng-message="required">This is required.</div>
+        </div>
+        <div class="hint dismissable">Extension, Phone or IP</div>
+      </md-input-container> -->
+    </div>
+  </div>
+
+  <div class="login-button">
+    <button (click)="loginToDialer()">
+      Login
+      <span class="lines"></span>
+    </button>
+  </div>
+</div>

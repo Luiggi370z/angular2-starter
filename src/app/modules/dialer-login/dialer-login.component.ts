@@ -1,4 +1,7 @@
+import { AgentStateKind } from '@appShared/models';
+import { SetAgentState } from '@appShared/actions';
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'app-dialer-login',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DialerLoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private state: Store) { }
 
   ngOnInit() {
+  }
+
+  loginToDialer() {
+    this.state.dispatch(new SetAgentState(AgentStateKind.AgentConnected));
   }
 
 }
