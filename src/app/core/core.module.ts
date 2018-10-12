@@ -5,13 +5,15 @@ import { CommonModule } from '@angular/common';
 import { AuthenticationService } from '@appCore/services';
 import { AdalService, AdalInterceptor } from 'adal-angular4';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TopbarComponent } from './topbar/topbar.component';
+import { ProfileComponent } from './topbar/profile/profile.component';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
   ],
-  declarations: [AuthCallbackComponent],
+  declarations: [AuthCallbackComponent, TopbarComponent, ProfileComponent],
   providers: [
     AdalService,
     { provide: HTTP_INTERCEPTORS, useClass: AdalInterceptor, multi: true },
