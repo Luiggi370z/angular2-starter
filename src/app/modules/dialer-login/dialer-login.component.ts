@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 
 @Component({
-  selector: 'app-dialer-login',
+  selector: 'cuy-dialer-login',
   templateUrl: './dialer-login.component.html',
   styleUrls: ['./dialer-login.component.scss']
 })

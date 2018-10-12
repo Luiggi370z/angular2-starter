@@ -7,7 +7,7 @@ import { Authentication } from '@appShared/models';
 import { AuthenticationState, SystemState } from '@appShared/state';
 
 @Component({
-  selector: 'app-home',
+  selector: 'cuy-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

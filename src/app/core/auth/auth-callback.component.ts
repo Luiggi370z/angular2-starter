@@ -3,7 +3,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthenticationService } from '@appCore/services';
 
 @Component({
-  selector: 'app-auth-callback',
+  selector: 'cuy-auth-callback',
   templateUrl: './auth-callback.component.html',
   styleUrls: ['./auth-callback.component.scss']
 })
