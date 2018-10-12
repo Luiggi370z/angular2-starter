@@ -1,19 +1,22 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { AppRoutingModule } from './app-routing.module';
-import { CoreModule } from './core/core.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {
+  BrowserAnimationsModule,
+  NoopAnimationsModule
+} from '@angular/platform-browser/animations';
+
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
+import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent, DialerLoginComponent } from '@appModules/';
 import { AuthenticationState, SystemState } from '@appShared/state';
-import { HomeComponent } from './modules';
-import { DialerLoginComponent } from './modules/dialer-login/dialer-login.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { DialerLoginComponent } from './modules/dialer-login/dialer-login.compon
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    NoopAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     CoreModule,
     AppRoutingModule,
@@ -32,7 +38,7 @@ import { DialerLoginComponent } from './modules/dialer-login/dialer-login.compon
       SystemState
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot()
+    NgxsLoggerPluginModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

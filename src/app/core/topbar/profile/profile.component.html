@@ -1,3 +1,19 @@
-<p>
-  profile works!
-</p>
+<div
+  class="root"
+  [matMenuTriggerFor]="menu"
+>
+  <div>{{ (user$ | async)?.name }}</div>
+  <div>{{ (user$ | async)?.email }}</div>
+</div>
+
+<mat-menu
+  #menu="matMenu"
+  [overlapTrigger]="false"
+>
+  <button
+    mat-menu-item
+    (click)="disconnect()"
+  >
+    <span>Disconnect</span>
+  </button>
+</mat-menu>

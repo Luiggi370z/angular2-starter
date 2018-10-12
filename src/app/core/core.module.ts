@@ -8,15 +8,29 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TopbarComponent } from './topbar/topbar.component';
 import { ProfileComponent } from './topbar/profile/profile.component';
 
+import { MaterialModule } from '@appSrc/app/material.module';
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
+    MaterialModule
   ],
-  declarations: [AuthCallbackComponent, TopbarComponent, ProfileComponent],
+  exports: [
+    TopbarComponent,
+    MaterialModule
+  ],
+  declarations: [
+    AuthCallbackComponent,
+    TopbarComponent,
+    ProfileComponent
+  ],
   providers: [
     AdalService,
-    { provide: HTTP_INTERCEPTORS, useClass: AdalInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AdalInterceptor,
+      multi: true
+    },
     AuthenticationService,
     AuthenticationGuard,
   ],

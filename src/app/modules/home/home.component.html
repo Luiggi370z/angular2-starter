@@ -1,17 +1,12 @@
-<div *ngIf="(isAgentConnected$ | async);else dialerLogin">
-  <div style="text-align:center">
-    <h1>
-      Welcome! {{ (user$ | async)?.name }}
-    </h1>
+<div
+  class="root"
+  *ngIf="(isAgentConnected$ | async);else dialerLogin"
+>
+  <cuy-topbar></cuy-topbar>
+  <div class="container">
+    <nav>Navbar</nav>
+    <div>Main Content</div>
   </div>
-  <h2>Main section </h2>
-  <span>{{ (user$ | async)?.email }}</span>
-  <nav>
-    <button
-      mat-button
-      (click)="signOut()"
-    >Logout</button>
-  </nav>
 </div>
 
 <ng-template #dialerLogin>

@@ -1,50 +1,68 @@
-<div
-  id="dialerLoginForm"
-  name="dialerLoginForm"
-  role="form"
-  novalidate
->
-  <div class="login-card"></div>
+<div class="login-content">
+  <form
+    id="dialerLoginForm"
+    name="dialerLoginForm"
+    role="form"
+    novalidate
+  >
 
-  <div class="login-card">
-    <div class="title">
-      CUY
-      <span class="sub-title">Agent Login</span>
-    </div>
+    <div class="login-card">
+      <div class="mat-headline">
+        CUY
+        <span class="sub-title">Agent</span>
+      </div>
 
-    <div class="login-body">
-      <select></select>
-
-      <!-- <md-input-container
-        ng-if="dialerLogin.extension.show"
-        class="extension"
-      >
-        <label>{{dialerLogin.extension.label}}</label>
-        <md-icon
-          md-font-icon="fa fa-phone"
-          class="s-24"
-        ></md-icon>
+      <mat-form-field appearance="fill">
+        <mat-label>Group</mat-label>
         <input
           type="text"
-          name="extension"
-          ng-model="dialerLogin.model.extension"
-          ng-disabled="dialerLogin.isLoading"
-          required
-          ui-validate='"dialerLogin.extensionIsValid($value)"'
-        />
-        <div ng-messages="dialerLoginForm.extension.$error">
-          <div ng-message="validator">Invalid Extension.</div>
-          <div ng-message="required">This is required.</div>
-        </div>
-        <div class="hint dismissable">Extension, Phone or IP</div>
-      </md-input-container> -->
-    </div>
-  </div>
+          aria-label="Group"
+          matInput
+          [formControl]="myControl"
+          [matAutocomplete]="auto"
+        >
+        <mat-icon matPrefix>home</mat-icon>
+        <mat-autocomplete
+          autoActiveFirstOption
+          #auto="matAutocomplete"
+        >
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
 
-  <div class="login-button">
-    <button (click)="loginToDialer()">
-      Login
-      <span class="lines"></span>
-    </button>
-  </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Station</mat-label>
+        <input
+          matInput
+          required
+        >
+        <mat-icon matPrefix>home</mat-icon>
+        <mat-hint>Extension, Phone or IP</mat-hint>
+      </mat-form-field>
+
+      <div class="login-bottom">
+        <a
+          (click)="logout()"
+          href=""
+        >Use another account</a>
+
+        <div class="login-button">
+          <button
+            mat-button
+            mat-stroked-button
+            color="primary"
+            (click)="loginToDialer()"
+          >
+            Connect
+            <span class="lines"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
